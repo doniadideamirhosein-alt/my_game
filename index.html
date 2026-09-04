@@ -2,11 +2,13 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WARZONE</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -14,9 +16,9 @@ body{
     color:#fff;
     min-height:100vh;
     background:
-    linear-gradient(rgba(0,5,9,.82),rgba(0,5,9,.92)),
-    radial-gradient(circle at 20% 20%,#16445b,transparent 35%),
-    radial-gradient(circle at 80% 80%,#431919,transparent 35%),
+    linear-gradient(rgba(0,4,8,.84),rgba(0,4,8,.96)),
+    radial-gradient(circle at 15% 20%,#12465c,transparent 35%),
+    radial-gradient(circle at 85% 80%,#481717,transparent 35%),
     #020609;
 }
 
@@ -26,12 +28,15 @@ body{
     padding:15px 0 40px;
 }
 
-header{
-    padding:22px;
+header,.panel{
+    background:rgba(4,14,21,.97);
     border:1px solid #31566a;
-    border-radius:20px;
-    background:rgba(4,15,23,.95);
-    box-shadow:0 15px 50px #000;
+    border-radius:18px;
+    box-shadow:0 15px 45px rgba(0,0,0,.65);
+}
+
+header{
+    padding:20px;
 }
 
 .logo{
@@ -40,10 +45,12 @@ header{
     letter-spacing:5px;
 }
 
-.logo span{color:#42baff}
+.logo span{
+    color:#39baf2;
+}
 
 .subtitle{
-    color:#718896;
+    color:#718996;
     font-size:12px;
     margin-top:5px;
 }
@@ -57,16 +64,16 @@ header{
 
 .stat{
     background:#091b27;
-    border:1px solid #234658;
-    border-radius:12px;
-    padding:13px;
+    border:1px solid #24495b;
+    border-radius:11px;
+    padding:12px;
     text-align:center;
 }
 
 .stat strong{
     display:block;
-    font-size:21px;
-    margin-top:5px;
+    font-size:20px;
+    margin-top:6px;
 }
 
 nav{
@@ -77,7 +84,7 @@ nav{
 }
 
 button{
-    padding:12px;
+    padding:11px;
     border:1px solid #315b70;
     border-radius:9px;
     background:#092333;
@@ -87,24 +94,23 @@ button{
 }
 
 button:hover{
-    background:#12445b;
+    background:#12506b;
+}
+
+button.good{
+    background:#10402d;
+}
+
+button.danger{
+    background:#401717;
 }
 
 .panel{
-    background:rgba(4,16,24,.96);
-    border:1px solid #31566a;
-    border-radius:18px;
     padding:18px;
 }
 
-.hidden{display:none}
-
-.card{
-    background:#091b27;
-    border:1px solid #24495b;
-    border-radius:12px;
-    padding:14px;
-    margin:9px 0;
+.hidden{
+    display:none;
 }
 
 .grid{
@@ -113,10 +119,16 @@ button:hover{
     gap:10px;
 }
 
-.list{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:8px;
+.card{
+    background:#091b27;
+    border:1px solid #24495b;
+    border-radius:12px;
+    padding:14px;
+    margin:8px 0;
+}
+
+.card h3{
+    margin-top:0;
 }
 
 input,select{
@@ -126,11 +138,30 @@ input,select{
     border-radius:8px;
     border:1px solid #31576b;
     background:#02080c;
-    color:white;
+    color:#fff;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:10px;
+    border-bottom:1px solid #25414e;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:6px;
+    background:#17384a;
+    font-size:12px;
 }
 
 .bar{
-    height:7px;
+    height:8px;
     background:#182c37;
     border-radius:20px;
     overflow:hidden;
@@ -139,26 +170,64 @@ input,select{
 
 .fill{
     height:100%;
-    background:#42b8ed;
+    background:#39b9ed;
 }
-
-.online{color:#43e58b}
-.offline{color:#7c8990}
-.power{color:#4bbcff}
 
 .status{
     margin-top:10px;
-    padding:10px;
+    padding:11px;
     border-radius:8px;
     background:#07151e;
     color:#7dd1f7;
 }
 
+.price{
+    color:#ffd45a;
+    font-weight:bold;
+}
+
+.online{
+    color:#48e58b;
+}
+
+.empty{
+    text-align:center;
+    padding:25px;
+    color:#78909d;
+}
+
+.small{
+    color:#8297a1;
+    font-size:12px;
+}
+
+.weapon-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
 @media(max-width:700px){
-    .stats{grid-template-columns:repeat(2,1fr)}
-    nav{grid-template-columns:repeat(3,1fr)}
-    .grid,.list{grid-template-columns:1fr}
-    .logo{font-size:30px}
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    nav{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .weapon-grid{
+        grid-template-columns:1fr;
+    }
+
+    .logo{
+        font-size:30px;
+    }
 }
 </style>
 </head>
@@ -168,247 +237,220 @@ input,select{
 <div class="container">
 
 <header>
-    <div class="logo">⚔ <span>WAR</span>ZONE</div>
-    <div class="subtitle">ONLINE COMPETITIVE BATTLE</div>
 
-    <div class="stats">
-        <div class="stat">
-            امتیاز
-            <strong id="score">0</strong>
-        </div>
+<div class="logo">
+⚔ <span>WAR</span>ZONE
+</div>
 
-        <div class="stat">
-            پول
-            <strong id="money">10000</strong>
-        </div>
+<div class="subtitle">
+ONLINE COMPETITIVE BATTLE
+</div>
 
-        <div class="stat">
-            موشک
-            <strong id="missiles">5</strong>
-        </div>
+<div class="stats">
 
-        <div class="stat">
-            پدافند
-            <strong id="defense">0</strong>
-        </div>
-    </div>
+<div class="stat">
+امتیاز
+<strong id="score">0</strong>
+</div>
+
+<div class="stat">
+💰 پول
+<strong id="money">10000</strong>
+</div>
+
+<div class="stat">
+🚀 موشک
+<strong id="missiles">5</strong>
+</div>
+
+<div class="stat">
+🛡️ پدافند
+<strong id="defense">0</strong>
+</div>
+
+</div>
 </header>
 
+
 <nav>
-    <button onclick="showPage('profile')">👤 پروفایل</button>
-    <button onclick="showPage('players')">🔎 بازیکنان</button>
-    <button onclick="showPage('weapons')">🚀 تسلیحات</button>
-    <button onclick="showPage('facilities')">🏭 تأسیسات</button>
-    <button onclick="showPage('clan')">🏰 کلن</button>
+
+<button onclick="showPage('home')">🏠 خانه</button>
+
+<button onclick="showPage('ranking')">
+🏆 رتبه‌بندی
+</button>
+
+<button onclick="showPage('clans')">
+🏰 کلن‌ها
+</button>
+
+<button onclick="showPage('transfer')">
+💸 انتقال پول
+</button>
+
+<button onclick="showPage('daily')">
+🎁 پاداش
+</button>
+
+<button onclick="showPage('missions')">
+🎯 مأموریت
+</button>
+
+<button onclick="showPage('shop')">
+🛒 فروشگاه
+</button>
+
+<button onclick="showPage('facilities')">
+🏭 تأسیسات
+</button>
+
+<button onclick="showPage('profile')">
+👤 پروفایل
+</button>
+
 </nav>
 
-<!-- PROFILE -->
-<section id="profile" class="panel">
 
-<h2>👤 پروفایل</h2>
+<!-- HOME -->
 
-<div class="card">
-    <p>نام بازیکن: <b id="playerName">---</b></p>
-    <p>شناسه بازیکن: <b id="playerID">---</b></p>
+<section id="home" class="panel">
 
-    <button onclick="copyID()">📋 کپی ID</button>
-</div>
-
-<div class="card">
-    <h3>✈️ انتخاب جنگنده</h3>
-
-    <select id="fighter">
-        <option>F-14</option>
-        <option>F-15</option>
-        <option>F-16</option>
-        <option>F/A-18</option>
-        <option>F-22</option>
-        <option>F-35</option>
-        <option>MiG-29</option>
-        <option>Su-30</option>
-        <option>Su-35</option>
-        <option>Rafale</option>
-        <option>Eurofighter Typhoon</option>
-    </select>
-</div>
-
-</section>
-
-<!-- PLAYERS -->
-<section id="players" class="panel hidden">
-
-<h2>🔎 جستجوی بازیکن واقعی</h2>
-
-<p>نام یا ID بازیکن را وارد کن:</p>
-
-<input id="searchBox" placeholder="مثلاً WZ-ABC123">
-
-<button onclick="searchPlayer()">🔎 جستجو</button>
-
-<div id="results"></div>
-
-</section>
-
-<!-- WEAPONS -->
-<section id="weapons" class="panel hidden">
-
-<h2>🚀 تسلیحات</h2>
-
-<div class="list">
-
-<div class="card">
-<h3>🚁 پهباد</h3>
-<p>قدرت: <b class="power">10</b></p>
-<div class="bar"><div class="fill" style="width:10%"></div></div>
-</div>
-
-<div class="card">
-<h3>🛡️ پدافند</h3>
-<p>قدرت: <b class="power">15</b></p>
-<div class="bar"><div class="fill" style="width:15%"></div></div>
-</div>
-
-<div class="card">
-<h3>💥 خمپاره</h3>
-<p>قدرت: <b class="power">20</b></p>
-<div class="bar"><div class="fill" style="width:20%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 راکت</h3>
-<p>قدرت: <b class="power">25</b></p>
-<div class="bar"><div class="fill" style="width:25%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 کروز</h3>
-<p>قدرت: <b class="power">35</b></p>
-<div class="bar"><div class="fill" style="width:35%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 سجیل</h3>
-<p>قدرت: <b class="power">50</b></p>
-<div class="bar"><div class="fill" style="width:50%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 خرمشهر</h3>
-<p>قدرت: <b class="power">55</b></p>
-<div class="bar"><div class="fill" style="width:55%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 عماد</h3>
-<p>قدرت: <b class="power">60</b></p>
-<div class="bar"><div class="fill" style="width:60%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 فتاح</h3>
-<p>قدرت: <b class="power">70</b></p>
-<div class="bar"><div class="fill" style="width:70%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 شهاب</h3>
-<p>قدرت: <b class="power">65</b></p>
-<div class="bar"><div class="fill" style="width:65%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 قدر</h3>
-<p>قدرت: <b class="power">68</b></p>
-<div class="bar"><div class="fill" style="width:68%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 حاج قاسم</h3>
-<p>قدرت: <b class="power">75</b></p>
-<div class="bar"><div class="fill" style="width:75%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 خیبرشکن</h3>
-<p>قدرت: <b class="power">80</b></p>
-<div class="bar"><div class="fill" style="width:80%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 قائم</h3>
-<p>قدرت: <b class="power">30</b></p>
-<div class="bar"><div class="fill" style="width:30%"></div></div>
-</div>
-
-<div class="card">
-<h3>🚀 براموشکا</h3>
-<p>قدرت: <b class="power">40</b></p>
-<div class="bar"><div class="fill" style="width:40%"></div></div>
-</div>
-
-</div>
-
-</section>
-
-<!-- FACILITIES -->
-<section id="facilities" class="panel hidden">
-
-<h2>🏭 تأسیسات</h2>
+<h2>⚔️ مرکز فرماندهی</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>🚀 کارخانه موشک</h3>
-<p>تولید روزانه موشک</p>
-<button onclick="claimMissiles()">دریافت موشک</button>
+
+<h3>👤 بازیکن</h3>
+
+<p>
+نام:
+<b id="playerName"></b>
+</p>
+
+<p>
+ID:
+<b id="playerID"></b>
+</p>
+
+<p>
+وضعیت:
+<span class="online">● آنلاین</span>
+</p>
+
 </div>
+
 
 <div class="card">
-<h3>🔫 کارخانه اسلحه</h3>
-<p>تولید روزانه</p>
-<button onclick="claimWeapons()">دریافت تولید</button>
+
+<h3>📊 سطح فرماندهی</h3>
+
+<p>
+سطح:
+<b id="level">1</b>
+</p>
+
+<div class="bar">
+<div id="levelBar"
+class="fill"
+style="width:0%">
+</div>
 </div>
 
-<div class="card">
-<h3>🏦 بانک مرکزی</h3>
-<div class="bar"><div class="fill" style="width:100%"></div></div>
 </div>
 
-<div class="card">
-<h3>⛏️ معدن مس و طلا</h3>
-<div class="bar"><div class="fill" style="width:100%"></div></div>
 </div>
 
-<div class="card">
-<h3>🛢️ پالایشگاه نفت</h3>
-<div class="bar"><div class="fill" style="width:100%"></div></div>
-</div>
-
-<div class="card">
-<h3>⚡ نیروگاه برق</h3>
-<div class="bar"><div class="fill" style="width:100%"></div></div>
-</div>
-
+<div id="status" class="status">
+به WARZONE خوش آمدی.
 </div>
 
 </section>
 
-<!-- CLAN -->
-<section id="clan" class="panel hidden">
 
-<h2>🏰 کلن</h2>
+<!-- RANKING -->
+
+<section id="ranking" class="panel hidden">
+
+<h2>🏆 رتبه‌بندی بازیکنان</h2>
+
+<div class="empty">
+هنوز بازیکنی برای نمایش وجود ندارد.
+<br>
+پس از اتصال سرور، بازیکنان واقعی اینجا نمایش داده می‌شوند.
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+<th>رتبه</th>
+<th>بازیکن</th>
+<th>ID</th>
+<th>امتیاز</th>
+</tr>
+
+</thead>
+
+<tbody id="rankingBody">
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- CLANS -->
+
+<section id="clans" class="panel hidden">
+
+<h2>🏰 کلن‌های برتر</h2>
+
+<div class="empty">
+هنوز کلنی برای نمایش وجود ندارد.
+<br>
+پس از اتصال سرور، کلن‌های واقعی اینجا نمایش داده می‌شوند.
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+<th>رتبه</th>
+<th>کلن</th>
+<th>قدرت</th>
+<th>اعضا</th>
+</tr>
+
+</thead>
+
+<tbody id="clanBody">
+</tbody>
+
+</table>
+
 
 <div class="card">
 
-<h3>ساخت کلن</h3>
+<h3>🏰 ساخت کلن</h3>
 
-<input id="clanName" placeholder="نام کلن">
+<input
+id="clanName"
+placeholder="نام کلن"
+>
 
-<button onclick="createClan()">🏰 ساخت کلن</button>
+<button onclick="createClan()">
+🏰 ساخت کلن
+</button>
 
-<p id="clanText">هنوز کلنی نداری.</p>
+<p id="clanInfo">
+هنوز کلنی نساختی.
+</p>
 
 </div>
+
 
 <div class="card">
 
@@ -416,13 +458,15 @@ input,select{
 
 <p>
 موجودی خزانه:
-<b id="treasury">0</b> 💰
+<b id="treasury">0</b>
+💰
 </p>
 
 <input
 id="depositAmount"
 type="number"
-placeholder="مبلغ واریزی">
+placeholder="مبلغ واریز"
+>
 
 <button onclick="depositClan()">
 💰 واریز به خزانه
@@ -432,285 +476,1071 @@ placeholder="مبلغ واریزی">
 
 </section>
 
+
+<!-- TRANSFER -->
+
+<section id="transfer" class="panel hidden">
+
+<h2>💸 انتقال پول</h2>
+
+<div class="card">
+
+<p class="small">
+ID بازیکن مقصد را وارد کن.
+</p>
+
+<input
+id="targetID"
+placeholder="WZ-XXXXXX"
+>
+
+<input
+id="transferAmount"
+type="number"
+placeholder="مبلغ"
+>
+
+<button
+onclick="transferMoney()"
+class="good"
+>
+💸 انتقال پول
+</button>
+
 </div>
+
+<div class="status">
+در نسخه متصل به سرور، انتقال بین بازیکنان واقعی انجام می‌شود.
+</div>
+
+</section>
+
+
+<!-- DAILY -->
+
+<section id="daily" class="panel hidden">
+
+<h2>🎁 پاداش روزانه</h2>
+
+<div class="card">
+
+<h3>پاداش امروز</h3>
+
+<p class="price">
+💰 2000 دلار
+</p>
+
+<p>
+⭐ 100 امتیاز
+</p>
+
+<button onclick="dailyReward()">
+🎁 دریافت پاداش
+</button>
+
+<p id="dailyText"></p>
+
+</div>
+
+</section>
+
+
+<!-- MISSIONS -->
+
+<section id="missions" class="panel hidden">
+
+<h2>🎯 مأموریت‌ها</h2>
+
+
+<div class="card" id="mission1">
+
+<h3>🎯 مأموریت ۱</h3>
+
+<p>
+اولین ورود به بازی
+</p>
+
+<p>
+پاداش:
+💰 500 دلار + ⭐ 100
+</p>
+
+<button onclick="completeMission(1)">
+انجام مأموریت
+</button>
+
+</div>
+
+
+<div class="card" id="mission2">
+
+<h3>🎯 مأموریت ۲</h3>
+
+<p>
+خرید اولین جنگنده
+</p>
+
+<p>
+پاداش:
+💰 1000 دلار + ⭐ 200
+</p>
+
+<button onclick="completeMission(2)">
+انجام مأموریت
+</button>
+
+</div>
+
+
+<div class="card" id="mission3">
+
+<h3>🎯 مأموریت ۳</h3>
+
+<p>
+رسیدن به 1000 امتیاز
+</p>
+
+<p>
+پاداش:
+💰 1500 دلار + ⭐ 300
+</p>
+
+<button onclick="completeMission(3)">
+انجام مأموریت
+</button>
+
+</div>
+
+</section>
+
+
+<!-- SHOP -->
+
+<section id="shop" class="panel hidden">
+
+<h2>🛒 فروشگاه WARZONE</h2>
+
+
+<h3>✈️ جنگنده‌ها</h3>
+
+<div class="grid">
+
+
+<div class="card">
+<h3>F-35</h3>
+<p>قدرت: 80</p>
+<p class="price">💰 5000 دلار</p>
+<button onclick="buyFighter('F-35',5000)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>F-22</h3>
+<p>قدرت: 95</p>
+<p class="price">💰 8000 دلار</p>
+<button onclick="buyFighter('F-22',8000)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>F-16</h3>
+<p>قدرت: 60</p>
+<p class="price">💰 3500 دلار</p>
+<button onclick="buyFighter('F-16',3500)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>Su-35</h3>
+<p>قدرت: 90</p>
+<p class="price">💰 7500 دلار</p>
+<button onclick="buyFighter('Su-35',7500)">
+خرید
+</button>
+</div>
+
+</div>
+
+
+<h3>🚀 تسلیحات</h3>
+
+<div class="weapon-grid">
+
+
+<div class="card">
+<h3>🚁 پهباد</h3>
+<p class="price">💰 30 دلار</p>
+<button onclick="buyWeapon('پهباد',30)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>💥 خمپاره</h3>
+<p class="price">💰 90 دلار</p>
+<button onclick="buyWeapon('خمپاره',90)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 کاتیوشا</h3>
+<p class="price">💰 120 دلار</p>
+<button onclick="buyWeapon('کاتیوشا',120)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 کروز</h3>
+<p class="price">💰 300 دلار</p>
+<button onclick="buyWeapon('کروز',300)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 عماد</h3>
+<p class="price">💰 500 دلار</p>
+<button onclick="buyWeapon('عماد',500)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 سجیل</h3>
+<p class="price">💰 800 دلار</p>
+<button onclick="buyWeapon('سجیل',800)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 فتاح</h3>
+<p class="price">💰 1000 دلار</p>
+<button onclick="buyWeapon('فتاح',1000)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 قاسم</h3>
+<p class="price">💰 1200 دلار</p>
+<button onclick="buyWeapon('قاسم',1200)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 قاهر</h3>
+<p class="price">💰 1500 دلار</p>
+<button onclick="buyWeapon('قاهر',1500)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 قاسم</h3>
+<p class="price">💰 2000 دلار</p>
+<button onclick="buyWeapon('قاسم-2000',2000)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🚀 قائم</h3>
+<p class="price">💰 2500 دلار</p>
+<button onclick="buyWeapon('قائم',2500)">
+خرید
+</button>
+</div>
+
+</div>
+
+
+<h3>🛡️ پدافند</h3>
+
+<div class="grid">
+
+
+<div class="card">
+<h3>🛡️ باور</h3>
+<p class="price">💰 4000 دلار</p>
+<button onclick="buyDefense('باور',4000)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🛡️ گنبد آهنین</h3>
+<p class="price">💰 3000 دلار</p>
+<button onclick="buyDefense('گنبد آهنین',3000)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🛡️ پاتریوت</h3>
+<p class="price">💰 500 دلار</p>
+<button onclick="buyDefense('پاتریوت',500)">
+خرید
+</button>
+</div>
+
+
+<div class="card">
+<h3>🛡️ S-300</h3>
+<p class="price">💰 1000 دلار</p>
+<button onclick="buyDefense('S-300',1000)">
+خرید
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FACILITIES -->
+
+<section id="facilities" class="panel hidden">
+
+<h2>🏭 تأسیسات</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>🚀 کارخانه موشک</h3>
+
+<p>
+هر روز موشک تولید می‌کند.
+</p>
+
+<button onclick="claimMissiles()">
+🚀 دریافت تولید
+</button>
+
+<p id="missileFactoryText"></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔫 کارخانه اسلحه</h3>
+
+<p>
+تولید روزانه
+</p>
+
+<button onclick="claimWeapons()">
+🔫 دریافت تولید
+</button>
+
+<p id="weaponFactoryText"></p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🏦 بانک مرکزی</h3>
+
+<p>
+تولید اقتصادی
+</p>
+
+<div class="bar">
+<div class="fill" style="width:100%"></div>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>⛏️ معدن مس و طلا</h3>
+
+<p>
+منبع اقتصادی
+</p>
+
+<div class="bar">
+<div class="fill" style="width:100%"></div>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>🛢️ پالایشگاه نفت</h3>
+
+<p>
+تولید نفت
+</p>
+
+<div class="bar">
+<div class="fill" style="width:100%"></div>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>⚡ نیروگاه برق</h3>
+
+<p>
+تولید برق
+</p>
+
+<div class="bar">
+<div class="fill" style="width:100%"></div>
+</div>
+
+</div>
+
+</div>
+
+<div class="status">
+در نسخه آنلاین، آسیب تأسیسات پس از نبرد در سرور ذخیره خواهد شد.
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="panel hidden">
+
+<h2>👤 پروفایل</h2>
+
+<div class="card">
+
+<p>
+نام:
+<b id="profileName"></b>
+</p>
+
+<p>
+شناسه اختصاصی:
+<b id="profileID"></b>
+</p>
+
+<button onclick="copyID()">
+📋 کپی ID
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h3>✈️ جنگنده فعلی</h3>
+
+<p id="fighterProfile">
+F-35
+</p>
+
+</div>
+
+</section>
+
+</div>
+
 
 <script>
 
-/*
-این قسمت برای حالت HTML-only است.
-اگر بعداً سرور آنلاین وصل شود،
-همین رابط می‌تواند به API متصل شود.
-*/
+let playerID=localStorage.getItem("WZ_ID");
+let playerName=localStorage.getItem("WZ_NAME");
 
-let playerID =
-localStorage.getItem("WARZONE_ID");
+if(!playerID){
 
-let playerName =
-localStorage.getItem("WARZONE_NAME");
+    playerID=
+    "WZ-"+
+    Math.random()
+    .toString(36)
+    .substring(2,8)
+    .toUpperCase();
 
-let game = {
-    score: Number(localStorage.getItem("WARZONE_SCORE")) || 0,
-    money: Number(localStorage.getItem("WARZONE_MONEY")) || 10000,
-    missiles: Number(localStorage.getItem("WARZONE_MISSILES")) || 5,
-    defense: Number(localStorage.getItem("WARZONE_DEFENSE")) || 0,
-    clan: JSON.parse(localStorage.getItem("WARZONE_CLAN") || "null"),
-    treasury: Number(localStorage.getItem("WARZONE_TREASURY")) || 0,
-    lastMissile: Number(localStorage.getItem("WARZONE_LAST_MISSILE")) || 0,
-    lastWeapon: Number(localStorage.getItem("WARZONE_LAST_WEAPON")) || 0
+    playerName=
+    prompt("نام بازیکن را وارد کن:") ||
+    "Commander";
+
+    localStorage.setItem(
+        "WZ_ID",
+        playerID
+    );
+
+    localStorage.setItem(
+        "WZ_NAME",
+        playerName
+    );
+
+    alert(
+        "🎮 خوش آمدی به WARZONE!\n\n"+
+        "ID تو:\n"+
+        playerID
+    );
+}
+
+
+let game={
+
+    score:
+    Number(localStorage.getItem("WZ_SCORE"))||0,
+
+    money:
+    Number(localStorage.getItem("WZ_MONEY"))||10000,
+
+    missiles:
+    Number(localStorage.getItem("WZ_MISSILES"))||5,
+
+    defense:
+    Number(localStorage.getItem("WZ_DEFENSE"))||0,
+
+    fighter:
+    localStorage.getItem("WZ_FIGHTER")||
+    "F-35",
+
+    daily:
+    localStorage.getItem("WZ_DAILY")||"",
+
+    lastMissile:
+    Number(localStorage.getItem("WZ_LAST_MISSILE"))||0,
+
+    lastWeapon:
+    Number(localStorage.getItem("WZ_LAST_WEAPON"))||0,
+
+    treasury:
+    Number(localStorage.getItem("WZ_TREASURY"))||0,
+
+    clan:
+    JSON.parse(
+        localStorage.getItem("WZ_CLAN")||
+        "null"
+    ),
+
+    weapons:
+    JSON.parse(
+        localStorage.getItem("WZ_WEAPONS")||
+        "{}"
+    ),
+
+    missions:
+    JSON.parse(
+        localStorage.getItem("WZ_MISSIONS")||
+        "{}"
+    )
 };
 
-function createID(){
-
-    const chars =
-    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-    let id = "WZ-";
-
-    for(let i=0;i<6;i++){
-        id += chars[
-            Math.floor(Math.random()*chars.length)
-        ];
-    }
-
-    return id;
-}
 
 function save(){
 
-    localStorage.setItem("WARZONE_ID",playerID);
-    localStorage.setItem("WARZONE_NAME",playerName);
-    localStorage.setItem("WARZONE_SCORE",game.score);
-    localStorage.setItem("WARZONE_MONEY",game.money);
-    localStorage.setItem("WARZONE_MISSILES",game.missiles);
-    localStorage.setItem("WARZONE_DEFENSE",game.defense);
-    localStorage.setItem("WARZONE_CLAN",JSON.stringify(game.clan));
-    localStorage.setItem("WARZONE_TREASURY",game.treasury);
-    localStorage.setItem("WARZONE_LAST_MISSILE",game.lastMissile);
-    localStorage.setItem("WARZONE_LAST_WEAPON",game.lastWeapon);
+    localStorage.setItem(
+        "WZ_SCORE",
+        game.score
+    );
+
+    localStorage.setItem(
+        "WZ_MONEY",
+        game.money
+    );
+
+    localStorage.setItem(
+        "WZ_MISSILES",
+        game.missiles
+    );
+
+    localStorage.setItem(
+        "WZ_DEFENSE",
+        game.defense
+    );
+
+    localStorage.setItem(
+        "WZ_FIGHTER",
+        game.fighter
+    );
+
+    localStorage.setItem(
+        "WZ_DAILY",
+        game.daily
+    );
+
+    localStorage.setItem(
+        "WZ_LAST_MISSILE",
+        game.lastMissile
+    );
+
+    localStorage.setItem(
+        "WZ_LAST_WEAPON",
+        game.lastWeapon
+    );
+
+    localStorage.setItem(
+        "WZ_TREASURY",
+        game.treasury
+    );
+
+    localStorage.setItem(
+        "WZ_CLAN",
+        JSON.stringify(game.clan)
+    );
+
+    localStorage.setItem(
+        "WZ_WEAPONS",
+        JSON.stringify(game.weapons)
+    );
+
+    localStorage.setItem(
+        "WZ_MISSIONS",
+        JSON.stringify(game.missions)
+    );
 }
 
-function start(){
 
-    if(!playerID){
+function update(){
 
-        playerName =
-        prompt("نام بازیکن را وارد کن:");
+    document.getElementById("playerName")
+    .textContent=playerName;
 
-        if(!playerName){
-            playerName = "Player";
-        }
+    document.getElementById("playerID")
+    .textContent=playerID;
 
-        playerID = createID();
+    document.getElementById("profileName")
+    .textContent=playerName;
 
-        save();
+    document.getElementById("profileID")
+    .textContent=playerID;
 
-        alert(
-            "🎮 خوش آمدی به WARZONE!\n\n" +
-            "ID اختصاصی تو:\n" +
-            playerID
-        );
-    }
+    document.getElementById("score")
+    .textContent=
+    game.score.toLocaleString();
 
-    updateUI();
-}
+    document.getElementById("money")
+    .textContent=
+    game.money.toLocaleString();
 
-function updateUI(){
-
-    document.getElementById("playerName").textContent =
-    playerName;
-
-    document.getElementById("playerID").textContent =
-    playerID;
-
-    document.getElementById("score").textContent =
-    game.score;
-
-    document.getElementById("money").textContent =
-    game.money;
-
-    document.getElementById("missiles").textContent =
+    document.getElementById("missiles")
+    .textContent=
     game.missiles;
 
-    document.getElementById("defense").textContent =
+    document.getElementById("defense")
+    .textContent=
     game.defense;
 
-    document.getElementById("treasury").textContent =
-    game.treasury;
+    document.getElementById("fighterView")
+    ?.textContent;
+
+    document.getElementById("fighterProfile")
+    .textContent=
+    game.fighter;
+
+    let level=
+    Math.floor(game.score/1000)+1;
+
+    document.getElementById("level")
+    .textContent=level;
+
+    document.getElementById("levelBar")
+    .style.width=
+    (game.score%1000)/10+"%";
+
+    document.getElementById("treasury")
+    .textContent=
+    game.treasury.toLocaleString();
 
     if(game.clan){
 
-        document.getElementById("clanText").innerHTML =
-        "🏰 کلن: <b>" +
-        game.clan.name +
-        "</b><br>" +
-        "شناسه کلن: " +
+        document.getElementById("clanInfo")
+        .innerHTML=
+        "🏰 کلن: <b>"+
+        escapeHTML(game.clan.name)+
+        "</b><br>"+
+        "ID کلن: "+
         game.clan.id;
 
     }
+
+    updateMissionVisual();
 }
+
 
 function showPage(id){
 
     document
     .querySelectorAll(".panel")
-    .forEach(panel =>
-        panel.classList.add("hidden")
-    );
+    .forEach(function(panel){
+
+        panel.classList.add("hidden");
+
+    });
 
     document
     .getElementById(id)
     .classList.remove("hidden");
 }
 
+
 function copyID(){
 
-    navigator.clipboard
-    .writeText(playerID)
-    .then(() =>
-        alert("ID کپی شد:\n" + playerID)
-    )
-    .catch(() =>
-        alert("ID شما:\n" + playerID)
+    if(navigator.clipboard){
+
+        navigator.clipboard
+        .writeText(playerID)
+        .then(function(){
+
+            alert(
+                "ID کپی شد:\n"+
+                playerID
+            );
+
+        });
+
+    }else{
+
+        alert(
+            "ID شما:\n"+
+            playerID
+        );
+
+    }
+}
+
+
+function buyFighter(name,price){
+
+    if(game.money<price){
+
+        alert(
+            "💰 پول کافی نداری."
+        );
+
+        return;
+    }
+
+    game.money-=price;
+    game.fighter=name;
+
+    game.score+=
+    Math.floor(price/10);
+
+    save();
+    update();
+
+    alert(
+        "✈️ جنگنده خریداری شد!\n\n"+
+        name
     );
 }
 
-function searchPlayer(){
 
-    const q =
-    document
-    .getElementById("searchBox")
-    .value
-    .trim();
+function buyWeapon(name,price){
 
-    if(!q){
+    if(game.money<price){
 
-        alert("نام یا ID را وارد کن.");
+        alert(
+            "💰 پول کافی نداری."
+        );
 
         return;
     }
 
-    /*
-    در نسخه HTML-only بازیکن واقعی
-    فقط وقتی قابل پیدا شدن است که
-    سرور آنلاین به بازی وصل باشد.
-    */
+    game.money-=price;
 
-    const results =
-    document.getElementById("results");
+    if(!game.weapons[name]){
+        game.weapons[name]=0;
+    }
 
-    results.innerHTML = `
-        <div class="card">
-            <h3>🔎 جستجو</h3>
-            <p>
-            برای پیدا کردن بازیکنان واقعی،
-            بازی باید به سرور آنلاین متصل باشد.
-            </p>
-            <p>
-            جستجوی شما:
-            <b>${escapeHTML(q)}</b>
-            </p>
-        </div>
-    `;
+    game.weapons[name]++;
+
+    game.score+=
+    Math.max(1,Math.floor(price/10));
+
+    save();
+    update();
+
+    alert(
+        "🚀 خرید انجام شد!\n\n"+
+        name+
+        "\n"+
+        price+
+        " دلار"
+    );
 }
 
-function escapeHTML(text){
 
-    return text
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+function buyDefense(name,price){
+
+    if(game.money<price){
+
+        alert(
+            "💰 پول کافی نداری."
+        );
+
+        return;
+    }
+
+    game.money-=price;
+
+    game.defense++;
+
+    game.score+=
+    Math.floor(price/10);
+
+    save();
+    update();
+
+    alert(
+        "🛡️ پدافند خریداری شد!\n\n"+
+        name
+    );
 }
+
+
+function dailyReward(){
+
+    let today=
+    new Date()
+    .toISOString()
+    .slice(0,10);
+
+    if(game.daily===today){
+
+        alert(
+            "🎁 پاداش امروز را قبلاً گرفتی."
+        );
+
+        return;
+    }
+
+    game.money+=2000;
+    game.score+=100;
+    game.daily=today;
+
+    save();
+    update();
+
+    document.getElementById("dailyText")
+    .textContent=
+    "🎉 پاداش امروز دریافت شد!";
+}
+
+
+function completeMission(number){
+
+    if(game.missions[number]){
+
+        alert(
+            "🎯 این مأموریت قبلاً انجام شده."
+        );
+
+        return;
+    }
+
+
+    if(number===1){
+
+        game.money+=500;
+        game.score+=100;
+
+    }
+
+
+    if(number===2){
+
+        if(
+            game.score<350
+        ){
+
+            alert(
+                "اول یک جنگنده خریداری کن."
+            );
+
+            return;
+        }
+
+        game.money+=1000;
+        game.score+=200;
+
+    }
+
+
+    if(number===3){
+
+        if(game.score<1000){
+
+            alert(
+                "امتیازت هنوز به 1000 نرسیده."
+            );
+
+            return;
+        }
+
+        game.money+=1500;
+        game.score+=300;
+
+    }
+
+
+    game.missions[number]=true;
+
+    save();
+    update();
+
+    alert(
+        "🎯 مأموریت انجام شد!"
+    );
+}
+
+
+function updateMissionVisual(){
+
+    [1,2,3].forEach(function(n){
+
+        let el=
+        document.getElementById(
+            "mission"+n
+        );
+
+        if(!el) return;
+
+        if(game.missions[n]){
+
+            el.classList.add("mission");
+
+            el.style.opacity=".55";
+
+        }
+
+    });
+
+}
+
 
 function claimMissiles(){
 
-    const now = Date.now();
-    const day = 86400000;
+    const now=Date.now();
+    const day=86400000;
 
     if(
         game.lastMissile &&
-        now - game.lastMissile < day
+        now-game.lastMissile<day
     ){
 
-        const remaining =
-        day -
-        (now-game.lastMissile);
-
-        const hours =
+        let hours=
         Math.ceil(
-            remaining / 3600000
+            (
+                day-
+                (now-game.lastMissile)
+            )/
+            3600000
         );
 
         alert(
-            "⏳ تولید بعدی حدود " +
-            hours +
-            " ساعت دیگر آماده می‌شود."
+            "⏳ تولید بعدی حدود "+
+            hours+
+            " ساعت دیگر."
         );
 
         return;
     }
 
-    game.missiles += 3;
-    game.lastMissile = now;
+    game.missiles+=3;
+    game.lastMissile=now;
 
     save();
-    updateUI();
+    update();
 
-    alert("🚀 ۳ موشک دریافت کردی!");
+    document.getElementById(
+        "missileFactoryText"
+    ).textContent=
+    "🚀 ۳ موشک دریافت شد.";
+
+    alert(
+        "🚀 ۳ موشک دریافت کردی!"
+    );
 }
+
 
 function claimWeapons(){
 
-    const now = Date.now();
-    const day = 86400000;
+    const now=Date.now();
+    const day=86400000;
 
     if(
         game.lastWeapon &&
-        now - game.lastWeapon < day
+        now-game.lastWeapon<day
     ){
 
-        const remaining =
-        day -
-        (now-game.lastWeapon);
-
-        const hours =
+        let hours=
         Math.ceil(
-            remaining / 3600000
+            (
+                day-
+                (now-game.lastWeapon)
+            )/
+            3600000
         );
 
         alert(
-            "⏳ تولید بعدی حدود " +
-            hours +
-            " ساعت دیگر آماده می‌شود."
+            "⏳ تولید بعدی حدود "+
+            hours+
+            " ساعت دیگر."
         );
 
         return;
     }
 
-    game.money += 500;
-    game.lastWeapon = now;
+    game.money+=500;
+    game.lastWeapon=now;
 
     save();
-    updateUI();
+    update();
+
+    document.getElementById(
+        "weaponFactoryText"
+    ).textContent=
+    "🔫 تولید روزانه دریافت شد.";
 
     alert(
         "🔫 تولید کارخانه دریافت شد!"
     );
 }
 
+
 function createClan(){
 
     if(game.clan){
 
         alert(
-            "تو قبلاً کلن داری."
+            "تو قبلاً یک کلن داری."
         );
 
         return;
     }
 
-    const name =
+    let name=
     document
     .getElementById("clanName")
     .value
@@ -725,27 +1555,31 @@ function createClan(){
         return;
     }
 
-    const clanID =
-    "CLAN-" +
-    createID()
-    .replace("WZ-","");
+    game.clan={
 
-    game.clan = {
-        id: clanID,
-        name: name,
-        owner: playerID,
-        members: [playerID]
+        id:
+        "CLAN-"+
+        Math.random()
+        .toString(36)
+        .substring(2,8)
+        .toUpperCase(),
+
+        name:name,
+
+        power:100,
+
+        members:1
+
     };
 
     save();
-    updateUI();
+    update();
 
     alert(
-        "🏰 کلن ساخته شد!\n\n" +
-        "ID کلن:\n" +
-        clanID
+        "🏰 کلن ساخته شد!"
     );
 }
+
 
 function depositClan(){
 
@@ -758,7 +1592,7 @@ function depositClan(){
         return;
     }
 
-    const amount =
+    let amount=
     Number(
         document
         .getElementById("depositAmount")
@@ -767,7 +1601,7 @@ function depositClan(){
 
     if(
         !Number.isInteger(amount) ||
-        amount <= 0
+        amount<=0
     ){
 
         alert(
@@ -777,33 +1611,123 @@ function depositClan(){
         return;
     }
 
-    if(game.money < amount){
+    if(game.money<amount){
 
         alert(
-            "پول کافی نداری."
+            "💰 پول کافی نداری."
         );
 
         return;
     }
 
-    game.money -= amount;
-    game.treasury += amount;
+    game.money-=amount;
+    game.treasury+=amount;
 
     save();
-    updateUI();
-
-    document.getElementById(
-        "depositAmount"
-    ).value = "";
+    update();
 
     alert(
-        "💰 " +
-        amount +
-        " به خزانه کلن اضافه شد."
+        "💰 مبلغ به خزانه کلن اضافه شد."
     );
 }
 
-start();
+
+function transferMoney(){
+
+    let target=
+    document
+    .getElementById("targetID")
+    .value
+    .trim();
+
+    let amount=
+    Number(
+        document
+        .getElementById("transferAmount")
+        .value
+    );
+
+    if(!target){
+
+        alert(
+            "ID بازیکن مقصد را وارد کن."
+        );
+
+        return;
+    }
+
+    if(target===playerID){
+
+        alert(
+            "نمی‌توانی به خودت پول انتقال بدهی."
+        );
+
+        return;
+    }
+
+    if(
+        !Number.isInteger(amount) ||
+        amount<=0
+    ){
+
+        alert(
+            "مبلغ صحیح وارد کن."
+        );
+
+        return;
+    }
+
+    if(amount>game.money){
+
+        alert(
+            "💰 موجودی کافی نیست."
+        );
+
+        return;
+    }
+
+    /*
+    این قسمت فعلاً نمایشی است.
+    برای انتقال واقعی بین بازیکنان
+    باید سرور و دیتابیس اضافه شود.
+    */
+
+    game.money-=amount;
+
+    save();
+    update();
+
+    alert(
+        "💸 انتقال ثبت شد!\n\n"+
+        "مبلغ: "+
+        amount.toLocaleString()+
+        " دلار\n"+
+        "گیرنده: "+
+        target
+    );
+
+    document.getElementById(
+        "targetID"
+    ).value="";
+
+    document.getElementById(
+        "transferAmount"
+    ).value="";
+}
+
+
+function escapeHTML(text){
+
+    return text
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+
+update();
 
 </script>
 
