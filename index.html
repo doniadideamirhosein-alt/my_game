@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بازی حدس عدد</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #151515;
+      color: white;
+      text-align: center;
+    }
+
+    .box {
+      max-width: 400px;
+      margin: 60px auto;
+      padding: 25px;
+      background: #242424;
+      border-radius: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 80%;
+      padding: 14px;
+      margin: 15px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    button {
+      padding: 14px 25px;
+      border: none;
+      border-radius: 10px;
+      background: #2196f3;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>🎮 حدس عدد</h1>
+
+  <p>یک عدد بین 1 تا 100 حدس بزن!</p>
+
+  <input id="guess" type="number" min="1" max="100" placeholder="عدد را وارد کن">
+
+  <br>
+
+  <button onclick="checkGuess()">حدس بزن</button>
+
+  <div id="result"></div>
+
+  <p>تعداد تلاش: <span id="attempts">0</span></p>
+</div>
+
+<script>
+  let number = Math.floor(Math.random() * 100) + 1;
+  let attempts = 0;
+
+  function checkGuess() {
+    const input = document.getElementById("guess");
+    const result = document.getElementById("result");
+
+    const guess = Number(input.value);
+
+    if (!guess || guess < 1 || guess > 100) {
+      result.innerText = "⚠️ یک عدد بین 1 تا 100 وارد کن";
+      return;
+    }
+
+    attempts++;
+    document.getElementById("attempts").innerText = attempts;
+
+    if (guess === number) {
+      result.innerText =
+        "🎉 درست حدس زدی! عدد " + number + " بود.";
+
+      number = Math.floor(Math.random() * 100) + 1;
+      attempts = 0;
+
+    } else if (guess < number) {
+      result.innerText = "⬆️ عدد بزرگ‌تره!";
+    } else {
+      result.innerText = "⬇️ عدد کوچک‌تره!";
+    }
+
+    input.value = "";
+  }
+</script>
+
+</body>
+</html>
